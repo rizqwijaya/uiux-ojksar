@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/ojk-sar-redesign/$1"
+    }
+  ]
+}
