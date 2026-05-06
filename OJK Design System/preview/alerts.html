@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { font-family: var(--font-family); background: #fff; padding: 16px 24px; display: flex; flex-direction: column; gap: 10px; }
+  .alert { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--radius-md); font-size: 13px; line-height: 1.5; }
+  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .alert-error { background: var(--color-error-light); color: var(--color-error); border: 1px solid #F0ABAC; }
+  .alert-warning { background: var(--color-warning-light); color: var(--secondary-800); border: 1px solid var(--secondary-200); }
+  .alert-success { background: var(--color-success-light); color: var(--color-success); border: 1px solid #B3DBC1; }
+  .alert-info { background: var(--color-info-light); color: var(--color-info); border: 1px solid #B3D4F0; }
+</style>
+</head><body>
+  <div class="alert alert-error"><span class="alert-icon">✕</span>Dokumen tidak dapat diverifikasi. Silakan periksa kembali data Anda.</div>
+  <div class="alert alert-warning"><span class="alert-icon">!</span>Batas waktu pengajuan akan berakhir pada 15 Mei 2026.</div>
+  <div class="alert alert-success"><span class="alert-icon">✓</span>Permohonan Anda telah berhasil diajukan.</div>
+  <div class="alert alert-info"><span class="alert-icon">i</span>Layanan pengaduan tersedia pada hari kerja pukul 08.00–17.00 WIB.</div>
+</body></html>

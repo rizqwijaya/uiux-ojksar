@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { font-family: var(--font-family); background: var(--neutral-50); padding: 20px 24px; display: flex; gap: 16px; }
+  .card { background: #fff; border: 1px solid var(--neutral-200); border-radius: var(--radius-lg); padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .card-title { font-size: 16px; font-weight: 700; color: var(--neutral-900); }
+  .card-text { font-size: 13px; color: var(--neutral-600); line-height: 1.5; }
+  .badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: var(--radius-full); font-size: 11px; font-weight: 600; width: fit-content; }
+  .badge-primary { background: var(--primary-100); color: var(--primary-700); }
+  .badge-warning { background: var(--secondary-100); color: var(--secondary-800); }
+  .badge-success { background: var(--color-success-light); color: var(--color-success); }
+  .badge-error { background: var(--color-error-light); color: var(--color-error); }
+  .badge-info { background: var(--color-info-light); color: var(--color-info); }
+</style>
+</head><body>
+  <div class="card">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span class="badge badge-primary">Perbankan</span>
+      <span class="badge badge-success">Disetujui</span>
+      <span class="badge badge-warning">Menunggu</span>
+      <span class="badge badge-error">Ditolak</span>
+      <span class="badge badge-info">Info</span>
+    </div>
+    <div class="card-title">Laporan Pengawasan Q1 2026</div>
+    <div class="card-text">Ringkasan hasil pengawasan sektor jasa keuangan periode Januari–Maret 2026.</div>
+  </div>
+  <div class="card" style="box-shadow: var(--shadow-md); border-color: transparent;">
+    <div class="card-title">Elevated Card</div>
+    <div class="card-text">Menggunakan shadow-md tanpa border untuk variasi elevasi.</div>
+    <div style="margin-top:auto;display:flex;gap:8px;">
+      <button style="font-family:var(--font-family);font-size:13px;font-weight:600;padding:8px 18px;border-radius:var(--radius-md);background:var(--color-primary);color:#fff;border:none;cursor:pointer;">Detail</button>
+      <button style="font-family:var(--font-family);font-size:13px;font-weight:600;padding:8px 18px;border-radius:var(--radius-md);background:transparent;color:var(--color-primary);border:1.5px solid var(--color-primary);cursor:pointer;">Unduh</button>
+    </div>
+  </div>
+</body></html>

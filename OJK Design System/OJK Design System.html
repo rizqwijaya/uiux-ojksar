@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OJK Design System v1</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { font-family: var(--font-family); background: var(--neutral-50); color: var(--neutral-900); min-height: 100vh; }
+  header { background: var(--color-primary); color: #fff; padding: 32px 40px; display: flex; align-items: center; gap: 16px; }
+  header img { height: 40px; filter: brightness(10); }
+  header h1 { font-size: var(--text-h2); font-weight: var(--weight-bold); }
+  header p { opacity: 0.9; font-size: var(--text-body-md); margin-top: 4px; }
+  main { padding: 32px 40px; max-width: 1200px; margin: 0 auto; }
+  h2 { font-size: var(--text-h3); font-weight: var(--weight-bold); margin: 24px 0 16px; color: var(--neutral-900); }
+  h2:first-of-type { margin-top: 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .card { background: #fff; border: 1px solid var(--neutral-200); border-radius: var(--radius-lg); padding: 20px; text-decoration: none; color: inherit; transition: box-shadow 150ms ease, transform 150ms ease; display: block; cursor: pointer; font-family: inherit; text-align: left; width: 100%; }
+  .card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .card:focus-visible { outline: 3px solid var(--primary-100); outline-offset: 2px; }
+  .card .label { font-size: var(--text-caption); color: var(--color-primary); font-weight: var(--weight-semibold); letter-spacing: var(--ls-button); text-transform: uppercase; }
+  .card .title { font-size: var(--text-h6); font-weight: var(--weight-bold); margin-top: 8px; }
+  .card .desc { font-size: var(--text-body-sm); color: var(--neutral-600); margin-top: 4px; line-height: var(--lh-relaxed); }
+
+  /* Modal */
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(29,30,29,0.6); display: none; align-items: center; justify-content: center; padding: 24px; z-index: 1000; }
+  .modal-backdrop.open { display: flex; }
+  .modal { background: #fff; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); width: 100%; max-width: 1100px; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; }
+  .modal-header { display: flex; align-items: center; gap: 12px; padding: 20px 24px; border-bottom: 1px solid var(--neutral-200); }
+  .modal-header .label { font-size: var(--text-caption); color: var(--color-primary); font-weight: var(--weight-semibold); letter-spacing: var(--ls-button); text-transform: uppercase; }
+  .modal-header .title { font-size: var(--text-h4); font-weight: var(--weight-bold); }
+  .modal-header .meta { flex: 1; }
+  .modal-close { background: var(--neutral-100); border: none; width: 36px; height: 36px; border-radius: var(--radius-full); cursor: pointer; font-size: 20px; color: var(--neutral-700); display: inline-flex; align-items: center; justify-content: center; transition: background 150ms ease; }
+  .modal-close:hover { background: var(--neutral-200); }
+  .modal-body { flex: 1; overflow: auto; background: var(--neutral-50); }
+  .modal-body iframe { width: 100%; height: 70vh; border: 0; display: block; background: #fff; }
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/OJK_Logo.png" alt="OJK">
+  <div>
+    <h1>OJK Design System</h1>
+    <p>Otoritas Jasa Keuangan — v1</p>
+  </div>
+</header>
+<main>
+  <h2>Foundations</h2>
+  <div class="grid">
+    <button class="card" data-src="preview/primary-colors.html" data-label="Color" data-title="Primary palette"><div class="label">Color</div><div class="title">Primary palette</div><div class="desc">Merah 1, Merah 2, Jingga 1, Jingga 2, Abu, Putih.</div></button>
+    <button class="card" data-src="preview/color-scales.html" data-label="Color" data-title="Color scales"><div class="label">Color</div><div class="title">Color scales</div><div class="desc">Primary / Secondary / Neutral 50–900.</div></button>
+    <button class="card" data-src="preview/semantic-tokens.html" data-label="Color" data-title="Semantic tokens"><div class="label">Color</div><div class="title">Semantic tokens</div><div class="desc">Success, warning, error, info.</div></button>
+    <button class="card" data-src="preview/type-headings.html" data-label="Type" data-title="Headings H1–H6"><div class="label">Type</div><div class="title">Headings H1–H6</div><div class="desc">Myriad Pro display scale.</div></button>
+    <button class="card" data-src="preview/type-body-ui.html" data-label="Type" data-title="Body & UI text"><div class="label">Type</div><div class="title">Body & UI text</div><div class="desc">Body, button, caption, label.</div></button>
+    <button class="card" data-src="preview/spacing.html" data-label="Layout" data-title="Spacing scale"><div class="label">Layout</div><div class="title">Spacing scale</div><div class="desc">4px base, 12 steps to 96px.</div></button>
+    <button class="card" data-src="preview/radii-shadows.html" data-label="Layout" data-title="Radii & shadows"><div class="label">Layout</div><div class="title">Radii & shadows</div><div class="desc">sm → xl elevation system.</div></button>
+    <button class="card" data-src="preview/logo.html" data-label="Brand" data-title="OJK logo"><div class="label">Brand</div><div class="title">OJK logo</div><div class="desc">Primary mark on light + dark surfaces.</div></button>
+  </div>
+
+  <h2>Components</h2>
+  <div class="grid">
+    <button class="card" data-src="preview/buttons.html" data-label="Component" data-title="Buttons"><div class="label">Component</div><div class="title">Buttons</div><div class="desc">Primary, secondary, outline, ghost, sizes, disabled.</div></button>
+    <button class="card" data-src="preview/form-inputs.html" data-label="Component" data-title="Form inputs"><div class="label">Component</div><div class="title">Form inputs</div><div class="desc">Text, select, error, helper.</div></button>
+    <button class="card" data-src="preview/cards-badges.html" data-label="Component" data-title="Cards & badges"><div class="label">Component</div><div class="title">Cards & badges</div><div class="desc">Bordered + elevated cards, badge variants.</div></button>
+    <button class="card" data-src="preview/navbar.html" data-label="Component" data-title="Navbar"><div class="label">Component</div><div class="title">Navbar</div><div class="desc">Primary navigation bar with brand.</div></button>
+    <button class="card" data-src="preview/alerts.html" data-label="Component" data-title="Alerts"><div class="label">Component</div><div class="title">Alerts</div><div class="desc">Info, warning, error, success.</div></button>
+  </div>
+</main>
+
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="meta">
+        <div class="label" id="modalLabel"></div>
+        <div class="title" id="modalTitle"></div>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Tutup">×</button>
+    </div>
+    <div class="modal-body">
+      <iframe id="modalFrame" title="Preview" src="about:blank"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var modal = document.getElementById('modal');
+  var frame = document.getElementById('modalFrame');
+  var labelEl = document.getElementById('modalLabel');
+  var titleEl = document.getElementById('modalTitle');
+  var closeBtn = document.getElementById('modalClose');
+
+  function openModal(src, label, title) {
+    labelEl.textContent = label;
+    titleEl.textContent = title;
+    frame.src = src;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    frame.src = 'about:blank';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.card').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openModal(btn.dataset.src, btn.dataset.label, btn.dataset.title);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+})();
+</script>
+</body>
+</html>

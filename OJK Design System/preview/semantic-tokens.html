@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { font-family: var(--font-family); background: #fff; padding: 16px 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .token { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: var(--radius-md); border: 1px solid var(--neutral-200); min-width: 200px; flex: 1; }
+  .dot { width: 28px; height: 28px; border-radius: var(--radius-full); flex-shrink: 0; border: 1px solid rgba(0,0,0,0.08); }
+  .label { font-size: 12px; font-weight: 600; color: var(--neutral-800); }
+  .meta { font-size: 10px; color: var(--neutral-500); }
+</style>
+</head><body>
+  <div class="token"><div class="dot" style="background:var(--color-primary)"></div><div><div class="label">Primary</div><div class="meta">CTA, active links</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--color-secondary)"></div><div><div class="label">Secondary / Warning</div><div class="meta">Highlights, alerts</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--color-accent)"></div><div><div class="label">Accent</div><div class="meta">Soft emphasis</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--color-error)"></div><div><div class="label">Error</div><div class="meta">Validation, danger</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--color-success)"></div><div><div class="label">Success</div><div class="meta">Confirmation</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--color-info)"></div><div><div class="label">Info</div><div class="meta">Informational</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--color-neutral)"></div><div><div class="label">Neutral</div><div class="meta">Text, borders</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--color-bg); border-color: var(--neutral-300);"></div><div><div class="label">Background / Surface</div><div class="meta">Page & cards</div></div></div>
+</body></html>

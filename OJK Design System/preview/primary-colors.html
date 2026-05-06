@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { font-family: var(--font-family); background: #fff; padding: 20px 24px; display: flex; gap: 16px; align-items: stretch; }
+  .swatch { flex: 1; border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: flex-end; padding: 14px 16px; min-height: 110px; }
+  .swatch .name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+  .swatch .hex { font-size: 12px; opacity: 0.8; }
+  .light { color: #fff; }
+</style>
+</head><body>
+  <div class="swatch light" style="background: var(--primary-600);">
+    <div class="name">Merah 1 (Primary)</div><div class="hex">#9E1E21 · Pantone 7622 C</div>
+  </div>
+  <div class="swatch light" style="background: var(--color-error);">
+    <div class="name">Merah 2 (Error)</div><div class="hex">#C52027 · Pantone 7620 C</div>
+  </div>
+  <div class="swatch light" style="background: var(--color-secondary);">
+    <div class="name">Jingga 1 (Secondary)</div><div class="hex">#F0714D · Pantone 1665 C</div>
+  </div>
+  <div class="swatch light" style="background: var(--color-accent);">
+    <div class="name">Jingga 2 (Accent)</div><div class="hex">#FF977A · Pantone 1625 C</div>
+  </div>
+  <div class="swatch" style="background: var(--color-neutral); color: #fff;">
+    <div class="name">Abu-abu (Neutral)</div><div class="hex">#8D8F8C · Pantone 422 C</div>
+  </div>
+</body></html>

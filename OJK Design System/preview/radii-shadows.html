@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { font-family: var(--font-family); background: #fff; padding: 20px 24px; display: flex; gap: 20px; }
+  .group { display: flex; flex-direction: column; gap: 8px; }
+  .group-label { font-size: 11px; font-weight: 700; color: var(--neutral-500); text-transform: uppercase; letter-spacing: 0.05em; }
+  .card { width: 120px; height: 64px; background: var(--neutral-50); display: flex; align-items: center; justify-content: center; }
+  .meta { font-size: 10px; color: var(--neutral-500); text-align: center; margin-top: 2px; }
+</style>
+</head><body>
+  <div class="group">
+    <div class="group-label">Border Radius</div>
+    <div style="display:flex;gap:10px;align-items:flex-end;">
+      <div><div class="card" style="border-radius:var(--radius-sm);border:1.5px solid var(--neutral-300)"></div><div class="meta">4px sm</div></div>
+      <div><div class="card" style="border-radius:var(--radius-md);border:1.5px solid var(--neutral-300)"></div><div class="meta">8px md</div></div>
+      <div><div class="card" style="border-radius:var(--radius-lg);border:1.5px solid var(--neutral-300)"></div><div class="meta">12px lg</div></div>
+      <div><div class="card" style="border-radius:var(--radius-xl);border:1.5px solid var(--neutral-300)"></div><div class="meta">16px xl</div></div>
+    </div>
+  </div>
+  <div class="group">
+    <div class="group-label">Elevation</div>
+    <div style="display:flex;gap:10px;align-items:flex-end;">
+      <div><div class="card" style="border-radius:var(--radius-md);box-shadow:var(--shadow-sm);background:#fff"></div><div class="meta">sm</div></div>
+      <div><div class="card" style="border-radius:var(--radius-md);box-shadow:var(--shadow-md);background:#fff"></div><div class="meta">md</div></div>
+      <div><div class="card" style="border-radius:var(--radius-md);box-shadow:var(--shadow-lg);background:#fff"></div><div class="meta">lg</div></div>
+      <div><div class="card" style="border-radius:var(--radius-md);box-shadow:var(--shadow-xl);background:#fff"></div><div class="meta">xl</div></div>
+    </div>
+  </div>
+</body></html>

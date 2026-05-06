@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { font-family: var(--font-family); background: #fff; padding: 0; }
+  .nav { display: flex; align-items: center; background: var(--color-primary); color: #fff; padding: 0 24px; height: 56px; gap: 24px; }
+  .nav-brand { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+  .nav-link { font-size: 14px; color: rgba(255,255,255,0.85); text-decoration: none; }
+  .nav-link:hover { color: #fff; }
+  .nav-link.active { color: #fff; border-bottom: 2px solid #fff; padding-bottom: 2px; }
+  .spacer { flex: 1; }
+  .nav-btn { font-family: var(--font-family); font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: var(--radius-md); background: rgba(255,255,255,0.15); color: #fff; border: none; cursor: pointer; }
+</style>
+</head><body>
+  <nav class="nav">
+    <div class="nav-brand">OJK</div>
+    <a class="nav-link active" href="#">Beranda</a>
+    <a class="nav-link" href="#">Regulasi</a>
+    <a class="nav-link" href="#">Pengawasan</a>
+    <a class="nav-link" href="#">Edukasi</a>
+    <a class="nav-link" href="#">Pengaduan</a>
+    <div class="spacer"></div>
+    <button class="nav-btn">Masuk</button>
+  </nav>
+</body></html>
