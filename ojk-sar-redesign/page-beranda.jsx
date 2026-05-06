@@ -41,6 +41,7 @@ function AksiCepat() {
 function PageBeranda() {
   const [showTHP, setShowTHP] = React.useState(true);
   const [showIPI, setShowIPI] = React.useState(true);
+  const [showPinjaman, setShowPinjaman] = React.useState(true);
   const [showPajak, setShowPajak] = React.useState(true);
   const [hoveredCard, setHoveredCard] = React.useState(null);
   const leaveTimer = React.useRef(null);
@@ -66,10 +67,10 @@ function PageBeranda() {
 
       <div style={{ padding: "24px 32px", overflow: "auto", flex: 1 }}>
         {/* KPI row */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16, marginBottom: 20 }}>
+        <div style={{ zoom: 0.94, display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16, marginBottom: 20 }}>
           <KPI tone="primary" label="Take-Home Pay April" value="Rp 24.850.000" delta="+2.4% dari bulan Maret" deltaUp icon="coin" shown={showTHP} onToggle={() => setShowTHP(v => !v)} active={hoveredCard === null ? true : hoveredCard === "primary"} onMouseEnter={() => enterCard("primary")} onMouseLeave={leaveCard} />
           <KPI tone="secondary" label="IPI 2025 Ditetapkan" value="Rp 87.500.000" sub="SK 15-03-2026" icon="award" shown={showIPI} onToggle={() => setShowIPI(v => !v)} active={hoveredCard === "secondary"} onMouseEnter={() => enterCard("secondary")} onMouseLeave={leaveCard} />
-          <KPI tone="info" label="Pinjaman Aktif" value="2 Fasilitas" sub="Kopejka & BRI" icon="wallet" active={hoveredCard === "info"} onMouseEnter={() => enterCard("info")} onMouseLeave={leaveCard} />
+          <KPI tone="info" label="Pinjaman Aktif" value="2 Fasilitas" sub="Kopejka & BRI" icon="wallet" shown={showPinjaman} onToggle={() => setShowPinjaman(v => !v)} active={hoveredCard === "info"} onMouseEnter={() => enterCard("info")} onMouseLeave={leaveCard} />
           <KPI tone="success" label="Pajak yang Dibayarkan" value="Rp 18.450.000" sub="YTD per 30 Apr 2026" icon="coin" shown={showPajak} onToggle={() => setShowPajak(v => !v)} active={hoveredCard === "success"} onMouseEnter={() => enterCard("success")} onMouseLeave={leaveCard} />
         </div>
 
@@ -157,6 +158,7 @@ function PageBeranda() {
 function KPI({ tone, label, value, sub, delta, deltaUp, icon, shown, onToggle, active, onMouseEnter, onMouseLeave }) {
   const hasToggle = onToggle !== undefined;
   const isShown = shown !== false;
+  const [toggleHover, setToggleHover] = React.useState(false);
   const activeStyle = { bg: "linear-gradient(135deg,#9E1E21,#7A1719)", color: "#fff", iconBg: "rgba(255,255,255,0.15)", iconColor: "#fff", labelColor: "rgba(255,255,255,0.85)", subColor: "rgba(255,255,255,0.75)", toggleColor: "rgba(255,255,255,0.7)" };
   const tones = {
     primary: { bg: "#fff", color: "var(--neutral-900)", iconBg: "var(--primary-50)", iconColor: "var(--color-primary)", labelColor: "var(--neutral-600)", subColor: "var(--neutral-500)", toggleColor: "var(--neutral-400)" },
@@ -179,23 +181,47 @@ function KPI({ tone, label, value, sub, delta, deltaUp, icon, shown, onToggle, a
         cursor: "default",
         transition: "all 200ms ease",
       }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: 12, fontWeight: 600, color: s.labelColor, letterSpacing: "0.01em" }}>{label}</span>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          {hasToggle && (
-            <button onClick={onToggle} title={isShown ? "Sembunyikan" : "Tampilkan"} style={{
-              background: "transparent", border: "none", cursor: "pointer",
-              color: s.toggleColor, display: "flex", alignItems: "center", padding: 2,
-              fontSize: 10, fontWeight: 600, gap: 3,
-            }}>
-              <Icon name={isShown ? "eye" : "eye"} size={13} />
-              <span style={{ fontSize: 10 }}>{isShown ? "Hide" : "Show"}</span>
-            </button>
-          )}
-          <span style={{ width: 32, height: 32, borderRadius: 8, background: s.iconBg, color: s.iconColor, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Icon name={icon} size={16} />
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+          <span style={{ width: 28, height: 28, borderRadius: 8, background: s.iconBg, color: s.iconColor, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <Icon name={icon} size={15} />
           </span>
+          <span style={{ fontSize: 12, fontWeight: 600, color: s.labelColor, letterSpacing: "0.01em", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</span>
         </div>
+        {hasToggle && (() => {
+          const onActiveCard = active;
+          const baseBg = onActiveCard ? "rgba(255,255,255,0.14)" : "var(--neutral-100)";
+          const hoverBg = onActiveCard ? "rgba(255,255,255,0.28)" : "var(--neutral-200)";
+          const baseBorder = onActiveCard ? "rgba(255,255,255,0.25)" : "var(--neutral-200)";
+          const hoverBorder = onActiveCard ? "rgba(255,255,255,0.45)" : "var(--neutral-300)";
+          const fg = onActiveCard ? "#fff" : "var(--neutral-600)";
+          return (
+            <button
+              onClick={onToggle}
+              onMouseEnter={() => setToggleHover(true)}
+              onMouseLeave={() => setToggleHover(false)}
+              title={isShown ? "Sembunyikan" : "Tampilkan"}
+              style={{
+                background: toggleHover ? hoverBg : baseBg,
+                border: `1px solid ${toggleHover ? hoverBorder : baseBorder}`,
+                cursor: "pointer",
+                color: fg,
+                display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 4,
+                height: 26,
+                padding: "0 9px",
+                fontSize: 10.5, fontWeight: 600,
+                borderRadius: 999,
+                letterSpacing: "0.02em",
+                transition: "all 150ms ease",
+                transform: toggleHover ? "translateY(-1px)" : "translateY(0)",
+                boxShadow: toggleHover && !onActiveCard ? "0 1px 3px rgba(0,0,0,0.06)" : "none",
+                flexShrink: 0,
+              }}>
+              <Icon name={isShown ? "eye" : "eyeOff"} size={12} />
+              <span>{isShown ? "Hide" : "Show"}</span>
+            </button>
+          );
+        })()}
       </div>
       <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-0.01em", lineHeight: 1.1 }}>
         {isShown ? value : <span style={{ letterSpacing: "0.15em", opacity: 0.6 }}>••••••••</span>}
@@ -263,7 +289,7 @@ function ChartBars() {
 
   return (
     <div style={{ position: "relative", width: "100%" }}>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="220" preserveAspectRatio="none" style={{ display: "block" }}>
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="220" preserveAspectRatio="xMidYMid meet" style={{ display: "block" }}>
         <defs>
           <linearGradient id="barGrad" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stopColor="#9E1E21" stopOpacity="0.85" />

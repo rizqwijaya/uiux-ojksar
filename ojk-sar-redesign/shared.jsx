@@ -31,6 +31,7 @@ const Icon = ({ name, size = 18, color = "currentColor", strokeWidth = 1.75, sty
     user: <><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0116 0" /></>,
     lock: <><rect x="4" y="11" width="16" height="10" rx="2" /><path d="M8 11V7a4 4 0 018 0v4" /></>,
     eye: <><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" /><circle cx="12" cy="12" r="3" /></>,
+    eyeOff: <><path d="M17.94 17.94A10.94 10.94 0 0112 19c-6.5 0-10-7-10-7a18.5 18.5 0 014.22-5.16" /><path d="M9.9 4.24A10.94 10.94 0 0112 4c6.5 0 10 7 10 7a18.5 18.5 0 01-3.17 4.19" /><path d="M9.88 9.88a3 3 0 104.24 4.24" /><line x1="2" y1="2" x2="22" y2="22" /></>,
     search: <><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.5-4.5" /></>,
     download: <><path d="M12 3v12" /><path d="M7 10l5 5 5-5" /><path d="M4 21h16" /></>,
     filter: <path d="M3 5h18l-7 9v6l-4-2v-4z" />,
@@ -195,7 +196,7 @@ function TopBar({ active, user = "Admin SAR", onNav }) {
         <div style={{ width: 1, height: 24, background: "rgba(255,255,255,0.25)", margin: "0 6px" }} />
         {/* Profile dropdown */}
         <div ref={dropdownRef} style={{ position: "relative" }}>
-          <button onClick={() => setUserOpen(v => !v)} style={{ ...topBtn, gap: 8, padding: "0 10px", width: 182 }}>
+          <button onClick={() => setUserOpen(v => !v)} style={{ ...topBtn, gap: 8, padding: "0 10px", maxWidth: 182 }}>
             <div style={{
               width: 30, height: 30, borderRadius: "50%", flexShrink: 0,
               background: "linear-gradient(135deg,#FF977A,#F0714D)",
@@ -205,7 +206,7 @@ function TopBar({ active, user = "Admin SAR", onNav }) {
             }}>AS</div>
             <div style={{ textAlign: "left", lineHeight: 1.1, flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 13, fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{user}</div>
-              <div style={{ fontSize: 10.5, opacity: 0.8, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>Pegawai Tetap</div>
+              <div style={{ fontSize: 10.5, opacity: 0.8, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>H01010</div>
             </div>
             <Icon name={userOpen ? "chevronUp" : "chevronDown"} size={14} style={{ flexShrink: 0 }} />
           </button>
