@@ -159,15 +159,7 @@ function TabRekap() {
 function TabFormulirPajak() {
   return (
     <>
-      <Card title="Formulir Pajak" subtitle="Bukti potong dan formulir terkait pelaporan SPT Tahunan."
-        headerRight={
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            <select defaultValue="2025" style={selectStyle}>
-              <option>2025</option><option>2024</option><option>2023</option>
-            </select>
-          </div>
-        }
-      >
+      <Card title="Formulir Pajak" subtitle="Bukti potong dan formulir terkait pelaporan SPT Tahunan.">
         <Notice tone="info">
           <strong>Petunjuk Pelaporan SPT.</strong> Formulir 1721-A1 wajib digunakan saat pelaporan SPT Tahunan paling lambat 31 Maret tahun berikutnya melalui DJP Online (e-Filing).
         </Notice>
@@ -180,49 +172,6 @@ function TabFormulirPajak() {
         </div>
       </Card>
 
-      <Card title="Status Pelaporan SPT Tahunan" subtitle="Riwayat 3 tahun terakhir">
-        <table style={tableStyle}>
-          <thead>
-            <tr style={{ background: "var(--neutral-50)" }}>
-              {["Tahun Pajak", "Tanggal Lapor", "No. BPE", "Status", ""].map(h => (
-                <th key={h} style={thStyle}>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { ty: "2025", dt: "22 Mar 2026", bpe: "BPE-2026032212345", st: "Lapor", tone: "success", icon: "file", iconTone: "primary" },
-              { ty: "2024", dt: "18 Mar 2025", bpe: "BPE-2025031898765", st: "Lapor", tone: "success", icon: "file", iconTone: "info" },
-              { ty: "2023", dt: "25 Mar 2024", bpe: "BPE-2024032554321", st: "Lapor", tone: "success", icon: "file", iconTone: "success" },
-            ].map((r, i) => {
-              const palette = {
-                primary: { bg: "var(--primary-50)", fg: "var(--color-primary)" },
-                info:    { bg: "#E6F0FB", fg: "#1565C0" },
-                warn:    { bg: "#FFF4E0", fg: "#B26A00" },
-                success: { bg: "#E8F6EC", fg: "#2E7D32" },
-              }[r.iconTone];
-              return (
-              <tr key={i} style={{ borderBottom: "1px solid var(--neutral-100)" }}>
-                <td style={{ ...tdStyle, fontWeight: 700, color: "var(--neutral-900)" }}>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                    <span style={{ width: 26, height: 26, borderRadius: 6, background: palette.bg, color: palette.fg, display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <Icon name={r.icon} size={14} />
-                    </span>
-                    {r.ty}
-                  </span>
-                </td>
-                <td style={tdStyle}>{r.dt}</td>
-                <td style={{ ...tdStyle, fontFamily: "monospace", fontSize: 12 }}>{r.bpe}</td>
-                <td style={tdStyle}><Badge tone={r.tone} icon="check">{r.st}</Badge></td>
-                <td style={{ ...tdStyle, textAlign: "right" }}>
-                  <Btn size="sm" variant="ghost" icon="download">BPE</Btn>
-                </td>
-              </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </Card>
     </>
   );
 }
