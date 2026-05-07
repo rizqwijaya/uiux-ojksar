@@ -161,7 +161,7 @@ function TabFormulirPajak() {
     <>
       <Card title="Formulir Pajak" subtitle="Bukti potong dan formulir terkait pelaporan SPT Tahunan.">
         <Notice tone="info">
-          <strong>Petunjuk Pelaporan SPT.</strong> Formulir 1721-A1 wajib digunakan saat pelaporan SPT Tahunan paling lambat 31 Maret tahun berikutnya melalui DJP Online (e-Filing).
+          <strong>Petunjuk Pelaporan SPT.</strong> Formulir 1721-A1 wajib digunakan saat pelaporan SPT Tahunan paling lambat 31 Maret tahun berikutnya melalui Coretax.
         </Notice>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 12, marginTop: 16 }}>

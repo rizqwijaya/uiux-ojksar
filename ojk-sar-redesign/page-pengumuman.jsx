@@ -196,7 +196,7 @@ function AnnouncementBody({ a }) {
           { l: "Format", v: "PDF, dapat dicetak" },
           { l: "Status", v: "Tersedia", tone: "success" },
         ]} />
-        <p style={pStyle}>Formulir dapat diunduh melalui menu <strong style={{ color: "var(--color-primary)" }}>Laporan → Formulir Pajak</strong>. Pastikan data penghasilan dan potongan telah sesuai sebelum melaporkan SPT melalui DJP Online (e-Filing).</p>
+        <p style={pStyle}>Formulir dapat diunduh melalui menu <strong style={{ color: "var(--color-primary)" }}>Laporan → Formulir Pajak</strong>. Pastikan data penghasilan dan potongan telah sesuai sebelum melaporkan SPT melalui Coretax.</p>
         <p style={pStyle}>Bagi pegawai yang memerlukan bantuan pengisian formulir, dapat menghubungi PIC Pajak Bagian Keuangan di ext. 3107.</p>
         <p>Demikian disampaikan. Atas perhatian Bapak/Ibu, kami sampaikan terima kasih.</p>
         <AttachmentBox filename="Panduan-Pengisian-1721-A1-TY2025.pdf" size="680 KB" pages="3" />

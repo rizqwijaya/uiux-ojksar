@@ -242,7 +242,7 @@
     "THR & Bonus": "THR & Bonus",
     "Bukti potong dan formulir terkait pelaporan SPT Tahunan.": "Withholding receipts and forms related to Annual Tax Return filing.",
     "Petunjuk Pelaporan SPT.": "Tax Return Filing Guide.",
-    "Formulir 1721-A1 wajib digunakan saat pelaporan SPT Tahunan paling lambat 31 Maret tahun berikutnya melalui DJP Online (e-Filing).": "Form 1721-A1 must be used for Annual Tax Return filing no later than March 31 of the following year via DJP Online (e-Filing).",
+    "Formulir 1721-A1 wajib digunakan saat pelaporan SPT Tahunan paling lambat 31 Maret tahun berikutnya melalui Coretax.": "Form 1721-A1 must be used for Annual Tax Return filing no later than March 31 of the following year via Coretax.",
     "Formulir 1721-A1": "Form 1721-A1",
     "Bukti Potong PPh 21": "PPh 21 Withholding Receipt",
     "Tata Cara Pelaporan SPT": "Tax Return Filing Procedure",
