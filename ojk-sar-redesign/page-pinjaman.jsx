@@ -2,18 +2,31 @@
 function PagePinjaman() {
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("Semua");
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 5;
   const rows = [
-    { id: "PJM-2026-0142", periode: "April 2026", kategori: "Konsumtif", status: "Disetujui", bank: "BRI", ket: "Renovasi rumah", buka: "02 Apr 2026", tutup: "02 Apr 2031", pengajuan: "Sedang Berjalan", tone: "success", amount: "Rp 250.000.000" },
-    { id: "PJM-2025-0987", periode: "Oktober 2025", kategori: "Pendidikan", status: "Disetujui", bank: "BTN", ket: "Biaya kuliah anak", buka: "12 Okt 2025", tutup: "12 Okt 2027", pengajuan: "Sedang Berjalan", tone: "success", amount: "Rp 45.000.000" },
-    { id: "PJM-2025-0654", periode: "Juni 2025", kategori: "Kendaraan", status: "Lunas", bank: "Mandiri", ket: "Pembelian mobil", buka: "05 Jun 2023", tutup: "05 Jun 2025", pengajuan: "Selesai", tone: "neutral", amount: "Rp 180.000.000" },
-    { id: "PJM-2025-0321", periode: "Februari 2025", kategori: "Konsumtif", status: "Diproses", bank: "BNI", ket: "Renovasi dapur", buka: "20 Feb 2025", tutup: "20 Feb 2030", pengajuan: "Verifikasi", tone: "warning", amount: "Rp 75.000.000" },
-    { id: "PJM-2024-1102", periode: "Desember 2024", kategori: "Konsumtif", status: "Ditolak", bank: "BTN", ket: "Pengajuan kedua", buka: "15 Des 2024", tutup: "—", pengajuan: "Ditolak", tone: "error", amount: "Rp 30.000.000" },
+    { id: "PJM-2026-0142", periode: "April 2026",    kategori: "Konsumtif",  status: "Disetujui", bank: "BRI",    ket: "Renovasi rumah",       buka: "02 Apr 2026", tutup: "02 Apr 2031", pengajuan: "Sedang Berjalan", tone: "success", amount: "Rp 250.000.000" },
+    { id: "PJM-2025-0987", periode: "Oktober 2025",  kategori: "Pendidikan", status: "Disetujui", bank: "BTN",    ket: "Biaya kuliah anak",    buka: "12 Okt 2025", tutup: "12 Okt 2027", pengajuan: "Sedang Berjalan", tone: "success", amount: "Rp 45.000.000" },
+    { id: "PJM-2025-0654", periode: "Juni 2025",     kategori: "Kendaraan",  status: "Lunas",     bank: "Mandiri",ket: "Pembelian mobil",      buka: "05 Jun 2023", tutup: "05 Jun 2025", pengajuan: "Selesai",        tone: "neutral", amount: "Rp 180.000.000" },
+    { id: "PJM-2025-0321", periode: "Februari 2025", kategori: "Konsumtif",  status: "Diproses",  bank: "BNI",    ket: "Renovasi dapur",       buka: "20 Feb 2025", tutup: "20 Feb 2030", pengajuan: "Verifikasi",     tone: "warning", amount: "Rp 75.000.000" },
+    { id: "PJM-2024-1102", periode: "Desember 2024", kategori: "Konsumtif",  status: "Ditolak",   bank: "BTN",    ket: "Pengajuan kedua",      buka: "15 Des 2024", tutup: "—",          pengajuan: "Ditolak",        tone: "error",   amount: "Rp 30.000.000" },
+    { id: "PJM-2024-0876", periode: "September 2024",kategori: "Pendidikan", status: "Lunas",     bank: "BRI",    ket: "Beasiswa tambahan",    buka: "10 Sep 2024", tutup: "10 Sep 2026", pengajuan: "Selesai",        tone: "neutral", amount: "Rp 20.000.000" },
+    { id: "PJM-2024-0543", periode: "Juni 2024",     kategori: "Kesehatan",  status: "Disetujui", bank: "BTN",    ket: "Operasi anggota keluarga", buka: "01 Jun 2024", tutup: "01 Jun 2027", pengajuan: "Sedang Berjalan", tone: "success", amount: "Rp 55.000.000" },
+    { id: "PJM-2023-1234", periode: "November 2023", kategori: "Konsumtif",  status: "Lunas",     bank: "Mandiri",ket: "Perabot rumah tangga", buka: "15 Nov 2023", tutup: "15 Nov 2024", pengajuan: "Selesai",        tone: "neutral", amount: "Rp 12.000.000" },
+    { id: "PJM-2023-0987", periode: "Agustus 2023",  kategori: "Kendaraan",  status: "Lunas",     bank: "BNI",    ket: "Motor dinas",          buka: "20 Ags 2023", tutup: "20 Ags 2025", pengajuan: "Selesai",        tone: "neutral", amount: "Rp 28.000.000" },
+    { id: "PJM-2023-0654", periode: "Mei 2023",      kategori: "Konsumtif",  status: "Ditolak",   bank: "BRI",    ket: "Plafon melebihi batas",buka: "05 Mei 2023", tutup: "—",          pengajuan: "Ditolak",        tone: "error",   amount: "Rp 400.000.000" },
+    { id: "PJM-2022-1100", periode: "Oktober 2022",  kategori: "Pendidikan", status: "Lunas",     bank: "BTN",    ket: "S2 dalam negeri",      buka: "01 Okt 2022", tutup: "01 Okt 2024", pengajuan: "Selesai",        tone: "neutral", amount: "Rp 35.000.000" },
+    { id: "PJM-2022-0432", periode: "Maret 2022",    kategori: "Konsumtif",  status: "Lunas",     bank: "Mandiri",ket: "Renovasi kamar mandi", buka: "10 Mar 2022", tutup: "10 Mar 2023", pengajuan: "Selesai",        tone: "neutral", amount: "Rp 15.000.000" },
   ];
   const q = query.trim().toLowerCase();
   const filteredRows = rows.filter(r =>
     (statusFilter === "Semua" || r.status === statusFilter) &&
     (q === "" || r.id.toLowerCase().includes(q) || r.ket.toLowerCase().includes(q) || r.kategori.toLowerCase().includes(q) || r.bank.toLowerCase().includes(q))
   );
+  const totalPages = Math.ceil(filteredRows.length / PAGE_SIZE);
+  const safePage = Math.min(currentPage, totalPages || 1);
+  const pagedRows = filteredRows.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+  const goPage = (n) => setCurrentPage(Math.max(1, Math.min(n, totalPages)));
 
   return (
     <PageShell active="" sidebarActive="Pinjaman" screenLabel="06 Pinjaman">
@@ -55,7 +68,9 @@ function PagePinjaman() {
         </div>
 
         {/* Filter bar */}
-        <Card padded={false}>
+        <Card padded={false} title="Riwayat Pengajuan" subtitle="Daftar seluruh pengajuan pinjaman dan pembiayaan Anda." headerRight={
+          <Input icon="search" placeholder="Cari ID atau keterangan…" style={{ height: 34, width: 240 }} value={query} onChange={e => setQuery(e.target.value)} />
+        }>
           <div style={{ display: "flex", alignItems: "center", padding: "12px 16px", gap: 10, flexWrap: "wrap", borderBottom: "1px solid var(--neutral-100)" }}>
             <span style={{ fontSize: 12, fontWeight: 700, color: "var(--neutral-700)", letterSpacing: "0.04em", textTransform: "uppercase" }}>Filter</span>
             <FilterPill label="Periode" value="Semua" />
@@ -67,9 +82,6 @@ function PagePinjaman() {
             <button onClick={() => { setQuery(""); setStatusFilter("Semua"); }} style={{ marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12.5, fontWeight: 600, color: "var(--color-primary)", background: "transparent", border: "none", cursor: "pointer" }}>
               <Icon name="refresh" size={13} /> Reset
             </button>
-            <div style={{ position: "relative" }}>
-              <Input icon="search" placeholder="Cari ID atau keterangan…" style={{ height: 34, width: 240 }} value={query} onChange={e => setQuery(e.target.value)} />
-            </div>
           </div>
 
           {/* Table */}
@@ -97,7 +109,7 @@ function PagePinjaman() {
                 {filteredRows.length === 0 && (
                   <tr><td colSpan={9} style={{ padding: 32, textAlign: "center", color: "var(--neutral-500)", fontSize: 13 }}>Tidak ada pengajuan cocok.</td></tr>
                 )}
-                {filteredRows.map((r) => {
+                {pagedRows.map((r) => {
                   const statusStyles = {
                     success: { dot: "var(--color-success)", bg: "var(--color-success-light)", text: "var(--color-success)" },
                     warning: { dot: "var(--color-secondary)", bg: "var(--color-warning-light)", text: "var(--secondary-800)" },
@@ -144,19 +156,19 @@ function PagePinjaman() {
 
           {/* Pagination */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", borderTop: "1px solid var(--neutral-100)", fontSize: 12.5, color: "var(--neutral-600)" }}>
-            <div>Menampilkan <strong style={{ color: "var(--neutral-900)" }}>1–5</strong> dari <strong style={{ color: "var(--neutral-900)" }}>12</strong> pengajuan</div>
+            <div>Menampilkan <strong style={{ color: "var(--neutral-900)" }}>{(safePage - 1) * PAGE_SIZE + 1}–{Math.min(safePage * PAGE_SIZE, filteredRows.length)}</strong> dari <strong style={{ color: "var(--neutral-900)" }}>{filteredRows.length}</strong> pengajuan</div>
             <div style={{ display: "flex", gap: 4 }}>
-              <Btn size="sm" variant="ghost" icon="chevron" style={{ transform: "rotate(180deg)" }}></Btn>
-              {[1, 2, 3].map(n => (
-                <button key={n} style={{
+              <Btn size="sm" variant="ghost" icon="chevron" style={{ transform: "rotate(180deg)" }} onClick={() => goPage(safePage - 1)}></Btn>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
+                <button key={n} onClick={() => goPage(n)} style={{
                   width: 30, height: 30, borderRadius: 6,
-                  background: n === 1 ? "var(--color-primary)" : "transparent",
-                  color: n === 1 ? "#fff" : "var(--neutral-700)",
-                  border: n === 1 ? "1px solid var(--color-primary)" : "1px solid var(--neutral-200)",
+                  background: n === safePage ? "var(--color-primary)" : "transparent",
+                  color: n === safePage ? "#fff" : "var(--neutral-700)",
+                  border: n === safePage ? "1px solid var(--color-primary)" : "1px solid var(--neutral-200)",
                   fontSize: 12.5, fontWeight: 600, cursor: "pointer",
                 }}>{n}</button>
               ))}
-              <Btn size="sm" variant="ghost" icon="chevron"></Btn>
+              <Btn size="sm" variant="ghost" icon="chevron" onClick={() => goPage(safePage + 1)}></Btn>
             </div>
           </div>
         </Card>
