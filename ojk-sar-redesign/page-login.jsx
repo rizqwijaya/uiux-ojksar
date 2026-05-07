@@ -34,26 +34,31 @@ function PageLogin() {
       display: "flex", flexDirection: "column",
     }}>
       {/* Slim brand bar */}
-      <div className="ojk-login-brand" style={{ color: "#fff" }}>
+      <div style={{
+        height: 56, background: "transparent",
+        position: "absolute", top: 0, left: 0, right: 0, zIndex: 10,
+        display: "flex", alignItems: "center", padding: "0 32px",
+        color: "#fff",
+      }}>
         <img src="assets/OJK_Logo.png" alt="OJK" style={{ height: 28, marginRight: 12, filter: "brightness(0) invert(1)" }} />
         <div style={{ lineHeight: 1.1 }}>
-          <div className="ojk-login-brand-text-title" style={{ fontSize: 15, fontWeight: 700 }}>OJK SAR</div>
-          <div className="ojk-login-brand-text-sub" style={{ fontSize: 10.5, opacity: 0.85, letterSpacing: "0.04em", textTransform: "uppercase" }}>Sistem Aplikasi Remunerasi</div>
+          <div style={{ fontSize: 15, fontWeight: 700 }}>OJK SAR</div>
+          <div style={{ fontSize: 10.5, opacity: 0.85, letterSpacing: "0.04em", textTransform: "uppercase" }}>Sistem Aplikasi Remunerasi</div>
         </div>
         <div style={{ flex: 1 }} />
       </div>
 
       {/* Body — split hero / login */}
-      <div className="ojk-login-body">
+      <div style={{ display: "grid", gridTemplateColumns: "1.25fr 1fr", flex: 1, minHeight: 0, position: "relative" }}>
         {/* Hero */}
-        <div className="ojk-login-hero" style={{
+        <div style={{
           position: "relative",
           backgroundImage: "url('assets/soemitro-login.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           color: "#fff", padding: "96px 44px 48px",
-          justifyContent: "flex-start",
+          display: "flex", flexDirection: "column", justifyContent: "flex-start",
           overflow: "hidden",
         }}>
           {/* Dark fade overlay */}
@@ -114,7 +119,7 @@ function PageLogin() {
         </div>
 
         {/* Login card */}
-        <div className="ojk-login-panel">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "48px 44px", background: "#fff", position: "relative", overflow: "hidden" }}>
           {/* Language switcher — top-right of login panel */}
           <div ref={langRef} style={{ position: "absolute", top: 16, right: 20, zIndex: 10 }}>
             <button onClick={() => setLangOpen(v => !v)} style={{
